@@ -1,7 +1,8 @@
 <script>
 	export default {
-		onLaunch: function() {
-			console.log('App Launch')
+		onLaunch: async function() {
+			const data= await this.$u.http.get('https://www.fastmock.site/mock/0cbd0a45609057735540800dd376bd09/api/tododata')
+			console.log(data)
 		},
 		onShow: function() {
 			console.log('App Show')
