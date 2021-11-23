@@ -1,15 +1,24 @@
 <template>
-	<view style="padding: 20px;">
-			<u-button type="primary" text="确定"></u-button>
-			<u-button type="primary" :plain="true" text="镂空"></u-button>
-			<u-button type="primary" :plain="true" :hairline="true" text="细边"></u-button>
-			<u-button type="primary" :disabled="disabled" text="禁用"></u-button>
-			<u-button type="primary" loading="true" loadingText="加载中"></u-button>
-			<u-button type="primary" icon="map" text="图标按钮"></u-button>
-			<u-button type="primary" shape="circle" text="按钮形状"></u-button>
-			<u-button text="渐变色按钮" color="linear-gradient(to right, rgb(66, 83, 216), rgb(213, 51, 186))"></u-button>
-			<u-button type="primary" size="small" text="大小尺寸"></u-button>
+	<view>
+		<view>
+			<image src="http://lizuishuai.top/uni-app/images/banner.png"         class="pic" @click="handClickChang"></image>
 		</view>
+		<view class="model">
+		    <text class="model_text">最常用快递员</text>
+		    <view class="model_prson prson">
+		      <image src="../../assets/portrait-img-portrait-img.png" class="model_prson_pic"></image>
+		      <view class="model_prson_text">
+		        <view class="model_prson_addr"><text> 慕慕**</text> <text>155***550</text> </view>
+		        <view class="model_prson_type"> <text class="express">急速快递</text> <text>中兴和园</text></view>
+		      </view>
+		      <button class="model_prson_but" bindtap="handClickSend">一键寄出</button>
+		    </view>
+		  </view>
+		<view class="model_prson model">
+		    <image src="../../assets/small-img.png" class="model2_pic"></image>
+		    <button class="model_prson_but r-20" bindtap="handClickSend">一键寄出</button>
+		</view>
+	</view>
 </template>
 <script>
 	export default {
@@ -18,39 +27,80 @@
 				title: 'Hello'
 			}
 		},
-		onLoad() {
-
-		},
+		
 		methods: {
-
+			handClickChang(){
+				console.log('awd')
+			}
 		}
 	}
 </script>
 
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+<style lang="scss" scoped>
+	.pic{
+		width: 750rpx;
+		height: 444rpx;
 	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
+	.model{
+		width: 710rpx;
+		margin: 46rpx auto 0;
+		color: $uni-font-color;
+		font-size: $uni-font-size-28;
+		&_text{
+			margin: 20rpx;
+			color: $uni-font-color;
+			font-size: $uni-font-size-28;
+		}
+		&_prson{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			box-sizing: border-box;
+			background-color: $uni-bg-color-grey;
+			&_pic{
+				width: 92rpx;
+				height: 92rpx;
+			}
+			&_text{
+				flex: 1;
+				margin-right: 58rpx;
+				margin-left: 34rpx;
+				color: $uni-font-color-1;
+				font-size: $uni-font-size-28;
+			}
+			&_addr{
+				display: flex;
+				justify-content: space-between;
+			}
+			&_type{
+				margin-top: 12rpx;
+				color: $uni-font-color;
+				font-size: $uni-font-size-24;
+			}
+			&_but{
+				padding: 0;
+				width: 186rpx !important;
+				height: 60rpx;
+				color: $uni-bg-color-grey;
+				line-height: 60rpx;
+				font-size: $uni-font-size-24;
+				border-radius: 100rpx;
+				background-color: $main-color;
+			}
+		}
 	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
+	.prson{
+		padding: 32rpx 20rpx;
 	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+	.express{
+	  margin-right: 20rpx;
+	}
+	.model2_pic{
+	  margin-left: 34rpx;
+	  width: 150rpx;
+	  height: 150rpx;
+	}
+	.r-20{
+	  margin-right: 20rpx !important;
 	}
 </style>

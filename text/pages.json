@@ -3,15 +3,58 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				
 			}
+		},{
+			"path":"pages/send/send",
+			"style":{
+				"navigationBarTitleText":" 寄快递 ",
+				"navigationBarTextStyle":"white"
+			}
+		},{
+			"path":"pages/inquire/inquire"
 		}
-	],
+	    ,{
+            "path" : "pages/my/my",
+            "style" :{
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"tabBar": {
+	    "color": "#7A7E83",
+	    "selectedColor": "#3cc51f",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff",
+	    "list": [{
+	        "pagePath": "pages/index/index",
+	        "iconPath": "static/home-icon-home-icon.png",
+	        "selectedIconPath": "static/home-icon-hover-home-icon-hover.png",
+	        "text": "首页"
+	    }, {
+	        "pagePath": "pages/send/send",
+	        "iconPath": "static/send-icon-send-icon.png",
+	        "selectedIconPath": "static/send-icon-hover-send-icon-hover.png",
+	        "text": "寄快递"
+	    },{
+			"pagePath": "pages/inquire/inquire",
+			"iconPath": "static/polling-icon-polling-icon.png",
+			"selectedIconPath": "static/polling-icon-hover-polling-icon-hover.png",
+			"text": "查快递"
+		},{
+			"pagePath": "pages/my/my",
+			"iconPath": "static/my-icon-my-icon.png",
+			"selectedIconPath": "static/my-icon-hover-my-icon-hover.png",
+			"text": "我的"
+		}]
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor":"#38be05",
+		"backgroundColor": "#f4f6fa"
+		// "enablePullDownRefresh":true
 	},
 	"easycom": {
 	        // npm安装的方式不需要前面的"@/"，下载安装的方式需要"@/"
