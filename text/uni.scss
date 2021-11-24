@@ -80,3 +80,10 @@ $uni-font-size-paragraph:15px;
 
 $uni-font-color:#999999;    //主字体颜色
 $uni-font-color-1:#626161;    //次字体颜色
+$uni-font-color-2:#35BD00;
+
+@mixin textover {           //文本过长隐藏
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

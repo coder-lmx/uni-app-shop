@@ -3,7 +3,6 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				
 			}
 		},{
 			"path":"pages/send/send",
@@ -21,7 +20,14 @@
                 "enablePullDownRefresh": false
             }
             
-        }
+        },{
+			"path" : "pages/index/Indent",
+			"style" :{
+			    "navigationBarTitleText": "我的快递",
+				"navigationBarTextStyle":"white",
+			    "enablePullDownRefresh": false
+			}
+		}
     ],
 	"tabBar": {
 	    "color": "#7A7E83",
@@ -30,23 +36,23 @@
 	    "backgroundColor": "#ffffff",
 	    "list": [{
 	        "pagePath": "pages/index/index",
-	        "iconPath": "static/home-icon-home-icon.png",
-	        "selectedIconPath": "static/home-icon-hover-home-icon-hover.png",
+	        "iconPath": "static/images/home-icon-home-icon.png",
+	        "selectedIconPath": "static/images/home-icon-hover-home-icon-hover.png",
 	        "text": "首页"
 	    }, {
 	        "pagePath": "pages/send/send",
-	        "iconPath": "static/send-icon-send-icon.png",
-	        "selectedIconPath": "static/send-icon-hover-send-icon-hover.png",
+	        "iconPath": "static/images/send-icon-send-icon.png",
+	        "selectedIconPath": "static/images/send-icon-hover-send-icon-hover.png",
 	        "text": "寄快递"
 	    },{
 			"pagePath": "pages/inquire/inquire",
-			"iconPath": "static/polling-icon-polling-icon.png",
-			"selectedIconPath": "static/polling-icon-hover-polling-icon-hover.png",
+			"iconPath": "static/images/polling-icon-polling-icon.png",
+			"selectedIconPath": "static/images/polling-icon-hover-polling-icon-hover.png",
 			"text": "查快递"
 		},{
 			"pagePath": "pages/my/my",
-			"iconPath": "static/my-icon-my-icon.png",
-			"selectedIconPath": "static/my-icon-hover-my-icon-hover.png",
+			"iconPath": "static/images/my-icon-my-icon.png",
+			"selectedIconPath": "static/images/my-icon-hover-my-icon-hover.png",
 			"text": "我的"
 		}]
 	},

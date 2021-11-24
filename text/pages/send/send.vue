@@ -50,7 +50,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.nav{
 		width: 100%;
 		box-sizing: border-box;

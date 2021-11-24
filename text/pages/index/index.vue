@@ -6,17 +6,17 @@
 		<view class="model">
 		    <text class="model_text">最常用快递员</text>
 		    <view class="model_prson prson">
-		      <image src="../../assets/portrait-img-portrait-img.png" class="model_prson_pic"></image>
+		      <u-avatar :src="src" size="92rpx"  class="prson_pic" ></u-avatar>
 		      <view class="model_prson_text">
 		        <view class="model_prson_addr"><text> 慕慕**</text> <text>155***550</text> </view>
 		        <view class="model_prson_type"> <text class="express">急速快递</text> <text>中兴和园</text></view>
 		      </view>
-		      <button class="model_prson_but" bindtap="handClickSend">一键寄出</button>
+		      <button class="model_prson_but" @click="handClickSend" >一键寄出</button>
 		    </view>
 		  </view>
 		<view class="model_prson model">
 		    <image src="../../assets/small-img.png" class="model2_pic"></image>
-		    <button class="model_prson_but r-20" bindtap="handClickSend">一键寄出</button>
+		    <button class="model_prson_but r-20" @click="handClickIndent">我的订单</button>
 		</view>
 	</view>
 </template>
@@ -24,13 +24,21 @@
 	export default {
 		data() {
 			return {
+				src:'../../assets/portrait-img-portrait-img.png',
 				title: 'Hello'
 			}
 		},
-		
 		methods: {
-			handClickChang(){
-				console.log('awd')
+			handClickSend(){
+				uni.switchTab({
+				    url: '/pages/send/send'
+				});
+			},
+			handClickIndent(){
+				uni.navigateTo({
+				    url: './Indent',
+				});
+				console.log('wadwa')
 			}
 		}
 	}
