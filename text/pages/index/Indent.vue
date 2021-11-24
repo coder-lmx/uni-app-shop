@@ -1,6 +1,6 @@
 <template>
-	<view class="indent">
-		<text class="indent_text" 
+	<view class="u-page">
+		<!-- <text class="indent_text" 
 		:class="state=='send'?'indent_text-hove':'' " 
 		@click="handClickChangeState('send')">
 			我寄出的
@@ -9,21 +9,39 @@
 		:class="state=='receive'?'indent_text-hove':''"
 		@click="handClickChangeState('receive')">
 			我收到的
-		</text>
+		</text> -->
+		<view class="u-demo-block">
+					<text class="u-demo-block__title">默认位置</text>
+					<view class="u-demo-block__content">
+						<u-subsection
+							:list="list"
+							mode="button"
+							:current="current4"
+							activeColor="#f9ae3d"
+							@change="change4"
+						></u-subsection>
+					</view>
+				</view>
 	</view>
+	
 </template>
 
 <script>
 	export default {
 		data(){
 			return{
-				state:'send'
+				state:'send',
+				current4: 1,
+				list: ['未付款', '待评价', '已付款'],
 			}
 		},
 		methods:{
 			handClickChangeState(state){
 				this.state=state
-			}
+			},
+			change4(index) {
+							this.current4 = index
+						}
 		}
 	}
 </script>
