@@ -24,8 +24,7 @@
 			"path" : "pages/index/Indent",
 			"style" :{
 			    "navigationBarTitleText": "我的快递",
-				"navigationBarTextStyle":"white",
-			    "enablePullDownRefresh": false
+				"navigationStyle": "custom"
 			}
 		}
     ],
