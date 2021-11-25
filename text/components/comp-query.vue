@@ -2,21 +2,40 @@
 	<view>
 		<view class="query">
 			<button 
-			class="query_bt query_bt-hidden" 
-			:style="{'background-color': bgcolor }">今天</button>
-			<button class="query_bt ">近七天</button>
-			<button class="query_bt ">近一个月</button>
-			<button class="query_bt ">自定义</button>
-			<button class="query_bt">搜索</button>
+			class="query_bt"
+			:style="{
+				'background-color':state == item? calendar.color :bgcolor ,
+				'color': state == item? '#ffffff':textColor}"
+			:class="{
+				'btn-radius':shape == 'circle',
+				'query_bt-hidden': state=='搜索'&& index!= 4? true:false}" 
+			v-for="(item,index) of this.dateList"
+			:ket="index"
+			@click="handClickChange(item)"
+			>{{item}}</button>
 		</view>
-		<view>
-			<u-calendar :show="true" :allowSameDay="true" mode="'range'" :minDate="minDate" :maxDate="maxDate" ></u-calendar>	
-		</view>
+		<u-calendar 
+			:show="calendar.show" 
+			:mode="calendar.mode" 
+			:minDate="calendar.minDate" 
+			:maxDate="calendar.maxDate" 
+			:color="calendar.color" 
+			:closeOnClickOverlay="true"
+			:defaultDate="defaultDate"
+			:maxRange="10"
+			@close="close"
+			@confirm="success"
+			>
+		</u-calendar>	
 	</view>
 </template>
 
 <script>
 	import  moment  from '@/common/moment.js'
+	
+	//#ifndef APP-PLUS
+	import {main_color} from '@/uni.scss'
+	//#endif
 	export default {
 		name:'comp-query',
 		props:{
@@ -26,39 +45,76 @@
 					return ['square', 'circle'].includes(value)
 				},
 				default(){
-					return 'square'
-				}
-			},
-			size:{
-				type:String,
-				 validator(value) {
-				 	return ['large','mini','normal'].includes(value)
-				 } ,
-				default(){
-					return 'normal'	
+					return 'circle'
 				}
 			},
 			bgcolor:{
 				type:String,
 				default(){
 					return '#f3f3f3'
-				},
+				}
+			},
 			textColor:{
 				type:String,
 				default(){
 					return '#000000'
 				},
 			}
-			}
 		},
 		data(){
 			return{
-				minDate:moment().subtract(1, 'month').format('YYYY-MM'),
-				maxDate:moment().add(10, 'days').format('YYYY-MM-DD')
+				state:'近一个月',
+				dateList:['今天','近七天','近一个月','自定义','搜索'],
+				defaultDate:[],  //选择时保存日期
+				calendarList:[],
+				calendar:{
+					minDate:moment().subtract(1, 'month').format('YYYY-MM'),  //可选最小月份
+					maxDate:moment().add(10, 'days').format('YYYY-MM-DD'),    //可选最大天数
+					//#ifndef APP-PLUS                 //除了在APP下执行
+						color:main_color,
+					//#endif
+					//#ifdef APP-PLUS                   //只在APP下执行
+						color:'#35BD00',
+					//#endif
+					text:'请选择日期',
+					mode: 'range',
+					show:false,
+				}
+			}
+		},
+		watch:{
+			calendarList(){
+				if(this.calendarList.length==0){
+					this.state='近一个月'
+				}
+			}
+		},
+		inject:['calendarDate','ChangeCalendar'] ,
+		methods:{
+			//点击遮罩成进行隐藏
+			close(e){
+				this.calendarList=[]
+				this.calendar.show=false
+			},
+			//点击确定时触发
+			success(e){
+				this.defaultDate=[...e]
+				this.calendarList=e
+				this.calendar.show=false
+			},
+			handClickChange(e){
+				this.state=e
+				switch(e){
+					case '自定义':
+						this.state=e
+						this.calendar.show=true ; break;
+					default :
+						return
+				}
 			}
 		},
 		mounted() {
-			
+			// this.ChangeCalendar({name:'aa'})
 		}
 	}
 </script>
@@ -67,23 +123,31 @@
 	.query{
 		display: flex;
 		align-items: center;
+		justify-content: space-around;;
 		width: 750rpx;
-		height: 90rpx ;
+		height: 100rpx;
 		margin-top: 20rpx;
+		box-sizing: border-box;
 		background-color: $uni-bg-color-grey;
 		&_bt{
 			display: flex;
 			align-items: center;
-			padding: 0 28rpx;
-			border-radius: 52rpx;
+			justify-content: center;
+			width: 120rpx;
+			height: 70rpx;
+			padding: 0 0rpx;
 			border: none;
-			font-size: 14rpx;
+			font-size: 24rpx;
 			&-hidden{
 				display: none !important;
 			}
 		}
-		&_bt::after{
-			border: none;
-		}
+	}
+	uni-button:after{
+		border: none;
+		// display: none;
+	}
+	.btn-radius{
+		border-radius: 50%;
 	}
 </style>

@@ -53,6 +53,7 @@
 						:color="color"
 						@click="confirm"
 						:disabled="buttonDisabled"
+						style="width: 100%;"
 					></u-button>
 				</view>
 			</slot>

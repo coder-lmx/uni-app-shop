@@ -29,6 +29,7 @@
 		components:{compQuery},
 		data(){
 			return{
+				calendarDate:{},
 				state:'send',
 				list2: [{
 				    name: '我寄出的'
@@ -40,23 +41,28 @@
 				}]
 			}
 		},
+		provide(){
+			return {
+				calendarDate:this.calendarDate,
+				ChangeCalendar:this.ChangeCalendar
+			}
+		}
+		,
 		methods:{
 			handClickChangeState(state){
 				this.state=state
 			},
 			change4(index) {
-							this.current4 = index
-						}
+				this.current4 = index
+			},
+			ChangeCalendar(data){
+				this.calendarDate=Object.assign({},data)
+				console.log(this.calendarDate)
+			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	// .indent{
-	// 	display: flex;
-	// 	align-items: center;
-	// 	width: 750rpx;
-	// 	height:90rpx ;
-	// 	background-color: $uni-bg-color-grey;
-	// }
+	
 </style>

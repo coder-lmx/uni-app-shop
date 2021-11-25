@@ -87,3 +87,6 @@ $uni-font-color-2:#35BD00;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+:export {
+	main_color:$main-color;
+}

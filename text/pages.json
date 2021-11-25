@@ -16,7 +16,8 @@
 	    ,{
             "path" : "pages/my/my",
             "style" :{
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "我的",
+				"navigationBarTextStyle":"white",
                 "enablePullDownRefresh": false
             }
             
@@ -24,7 +25,8 @@
 			"path" : "pages/index/Indent",
 			"style" :{
 			    "navigationBarTitleText": "我的快递",
-				"navigationStyle": "custom"
+				"navigationStyle": "default",
+				"navigationBarTextStyle":"white"
 			}
 		}
     ],
