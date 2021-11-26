@@ -8,6 +8,7 @@
 			:clearable="true"
 			shape="circle"
 			fontSize="32rpx"
+			@input="handChangeInput"
 			></u--input>
 			<text class="query_text" @click="handClickShowComp">
 				{{bt_text}}
@@ -27,6 +28,13 @@
 			handClickShowComp(){
 				if(this.bt_text=='取消'){
 						this.$emit('clickShowComp')
+				}
+			},
+			handChangeInput(e){
+				if(e !==''){
+					this.bt_text='搜索'
+				}else{
+					this.bt_text='取消'
 				}
 			}
 		}

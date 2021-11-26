@@ -18,14 +18,18 @@
 				fontWeight: 'bold',
 				transform: 'scale(1.05)'
 			}"></u-tabs>
-			<!-- #ifndef APP-PLUS  -->
+			<!-- #ifdef H5  -->
 			<keep-alive>
 				<transition name="tran" mode="out-in">
 					<component :is="showComponent"  @clickShowComp="changeShowComponent"></component>
 				</transition>
 			</keep-alive>
 			<!-- #endif -->
-			<scroll-view scroll-y="true" refresher-enabled="true" class="scrlll">
+			<!-- #ifdef APP-PLUS -->
+				<component :is="showComponent" @clickShowComp="changeShowComponent"></component>
+			<!-- #endif -->
+			<scroll-view scroll-y="true" refresher-enabled="true" class="scrlll" refresher-triggered="true">
+				达瓦达瓦达瓦	
 				
 			</scroll-view>
 	</view>
@@ -89,7 +93,7 @@
 		text-align: center;
 	}
 	.tran-enter-active, .tran-leave-active {
-	  transition: all .2s;
+	  transition: all .1s;
 	}
 	.tran-leave-to /* .fade-leave-active below version 2.1.8 */ {
 	  transform: translateX(-100%);

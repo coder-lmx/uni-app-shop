@@ -3174,10 +3174,28 @@ var render = function() {
         staticStyle: { "background-color": "#FFFFFF" },
         attrs: { _i: 1 }
       }),
-      _c("v-uni-scroll-view", {
-        staticClass: _vm._$g(2, "sc"),
-        attrs: { "scroll-y": "true", "refresher-enabled": "true", _i: 2 }
-      })
+      _c(_vm._$g(2, "is"), {
+        tag: "component",
+        attrs: { _i: 2 },
+        on: {
+          clickShowComp: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      }),
+      _c(
+        "v-uni-scroll-view",
+        {
+          staticClass: _vm._$g(3, "sc"),
+          attrs: {
+            "scroll-y": "true",
+            "refresher-enabled": "true",
+            "refresher-triggered": "true",
+            _i: 3
+          }
+        },
+        [_vm._v("达瓦达瓦达瓦")]
+      )
     ],
     1
   )
@@ -3776,6 +3794,7 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
+    uIcon: __webpack_require__(/*! uview-ui/components/u-icon/u-icon.vue */ 8).default,
     uCalendar: __webpack_require__(/*! uview-ui/components/u-calendar/u-calendar.vue */ 107).default
   }
 } catch (e) {
@@ -3823,7 +3842,7 @@ var render = function() {
             },
             [
               _vm._$g("3-" + $30, "i")
-                ? _c("span", { attrs: { _i: "3-" + $30 } }, [_vm._v("")])
+                ? _c("u-icon", { attrs: { _i: "3-" + $30 } })
                 : _vm._e(),
               _vm._v(_vm._$g("2-" + $30, "t1-0"))
             ],
@@ -6247,9 +6266,19 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/using-components.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/style.js!D:/git/text/components/comp-query.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/script.js):\nSyntaxError: Unexpected token '}'\n    at new Function (<anonymous>)\n    at getTestTemplate (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\vue-cli-plugin-uni\\packages\\webpack-preprocess-loader\\preprocess\\lib\\preprocess.js:375:10)\n    at testPasses (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\vue-cli-plugin-uni\\packages\\webpack-preprocess-loader\\preprocess\\lib\\preprocess.js:379:16)\n    at F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\vue-cli-plugin-uni\\packages\\webpack-preprocess-loader\\preprocess\\lib\\preprocess.js:176:19\n    at F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\vue-cli-plugin-uni\\packages\\webpack-preprocess-loader\\preprocess\\lib\\preprocess.js:326:22\n    at Array.reduce (<anonymous>)\n    at matchReplacePass (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\vue-cli-plugin-uni\\packages\\webpack-preprocess-loader\\preprocess\\lib\\preprocess.js:313:20)\n    at replaceRecursive (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\vue-cli-plugin-uni\\packages\\webpack-preprocess-loader\\preprocess\\lib\\preprocess.js:333:10)\n    at preprocessor (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\vue-cli-plugin-uni\\packages\\webpack-preprocess-loader\\preprocess\\lib\\preprocess.js:168:10)\n    at Object.preprocess (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\vue-cli-plugin-uni\\packages\\webpack-preprocess-loader\\preprocess\\lib\\preprocess.js:93:10)\n    at Object.<anonymous> (F:\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\vue-cli-plugin-uni\\packages\\webpack-uni-app-loader\\view\\script.js:56:26)");
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+
+{
+  name: "comp-query", props: ["shape", "bgcolor", "textColor"],
+  data: function data() {
+    return {
+      wxsProps: {} };
+
+  },
+  components: {} };exports.default = _default;
 
 /***/ }),
 /* 189 */
@@ -6408,7 +6437,15 @@ var render = function() {
     "v-uni-view",
     { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
     [
-      _c("u--input", { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } }),
+      _c("u--input", {
+        staticClass: _vm._$g(1, "sc"),
+        attrs: { _i: 1 },
+        on: {
+          input: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
+      }),
       _c(
         "v-uni-text",
         {
@@ -7012,7 +7049,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 16);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n[data-v-b1bcb11c]:export {\r\n  main_color: #35BD00;\r\n  uni-bg-color: #f4f6fa;\r\n  uni-font-size-28: 28rpx;\n}\n.scrlll[data-v-b1bcb11c] {\r\n  max-height: 1100rpx;\r\n  text-align: center;\n}\n.tran-enter-active[data-v-b1bcb11c], .tran-leave-active[data-v-b1bcb11c] {\r\n  transition: all .2s;\n}\n.tran-leave-to[data-v-b1bcb11c] {\r\n  -webkit-transform: translateX(-100%);\r\n          transform: translateX(-100%);\n}\n.tran-enter[data-v-b1bcb11c] {\r\n  -webkit-transform: translateX(100%);\r\n          transform: translateX(100%);\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n[data-v-b1bcb11c]:export {\r\n  main_color: #35BD00;\r\n  uni-bg-color: #f4f6fa;\r\n  uni-font-size-28: 28rpx;\n}\n.scrlll[data-v-b1bcb11c] {\r\n  max-height: 1100rpx;\r\n  text-align: center;\n}\n.tran-enter-active[data-v-b1bcb11c], .tran-leave-active[data-v-b1bcb11c] {\r\n  transition: all .1s;\n}\n.tran-leave-to[data-v-b1bcb11c] {\r\n  -webkit-transform: translateX(-100%);\r\n          transform: translateX(-100%);\n}\n.tran-enter[data-v-b1bcb11c] {\r\n  -webkit-transform: translateX(100%);\r\n          transform: translateX(100%);\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
