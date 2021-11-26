@@ -28,9 +28,21 @@
 			<!-- #ifdef APP-PLUS -->
 				<component :is="showComponent" @clickShowComp="changeShowComponent"></component>
 			<!-- #endif -->
-			<scroll-view scroll-y="true" refresher-enabled="true" class="scrlll" refresher-triggered="true">
-				达瓦达瓦达瓦	
-				
+			<scroll-view scroll-y="true" :refresher-enabled="true" class="scrlll" :refresher-triggered="true">
+				<view class="u-demo-block__content">
+					
+					<!-- 设置加载状态 -->
+					<u-loadmore           
+						v-show="loadState.loadisShow"
+						:status="loadState.nomore"
+						:nomoreText="loadState.nomoreText"
+						loadingText="先等会,我先加载下"
+						fontSize="30rpx"
+						color="#35BD00"
+						height="40"
+						:line="loadState.isLine"
+					></u-loadmore>
+				</view>
 			</scroll-view>
 	</view>
 	
@@ -39,6 +51,7 @@
 <script>
 	import compQuery from '@/components/comp-query.vue'
 	import compSearch from '@/components/comp-search.vue'
+	import http from '@/common/baseRequest.js'
 	export default {
 		components:{compQuery,compSearch},
 		data(){
@@ -53,7 +66,13 @@
 				    badge: {
 				        isDot: true
 				    }
-				}]
+				}],
+				loadState:{                        //设置加载状态
+					loadisShow:true,
+					nomore:"nomore" ,
+					nomoreText:"没有了还看",
+					isLine:true
+				}
 			}
 		},
 		provide(){
@@ -61,14 +80,13 @@
 				calendarDate:this.calendarDate,
 				ChangeCalendar:this.ChangeCalendar
 			}
-		}
-		,
+		},
 		methods:{
-			handClickChangeState(state){
-				this.state=state
+			 handClickChangeState(state){
+				 this.state=state
 			},
 			change4(index) {
-				this.current4 = index
+				 this.current4 = index
 			},
 			//将组件传来的数据添加到数组中
 			changeCalendar(data){
@@ -83,6 +101,13 @@
 					this.showComponent = 'comp-query'
 				}
 			}
+		},
+		 onShow:async ()=>{
+			 const {data}= await http.request({
+				method:'GET',
+				url:'/getexpress'
+			})
+			console.log(data)
 		}
 	}
 </script>
