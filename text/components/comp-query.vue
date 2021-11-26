@@ -2,17 +2,16 @@
 	<view>
 		<view class="query">
 			<button 
-			class="query_bt"
+			class="query_bt iconfont"
 			:style="{
 				'background-color':state == item? calendar.color :bgcolor ,
 				'color': state == item? '#ffffff':textColor}"
 			:class="{
-				'btn-radius':shape == 'circle',
-				'query_bt-hidden': state=='搜索'&& index!= 4? true:false}" 
+				'btn-radius':shape == 'circle'}" 
 			v-for="(item,index) of this.dateList"
 			:ket="index"
 			@click="handClickChange(item)"
-			>{{item}}</button>
+			><span v-if="index == 4 ? true : false">&#xe606</span>{{item}}</button>
 		</view>
 		<u-calendar 
 			:show="calendar.show" 
@@ -32,10 +31,9 @@
 
 <script>
 	import  moment  from '@/common/moment.js'
-	
-	//#ifndef APP-PLUS
+	// #ifndef APP-PLUS
 	import {main_color} from '@/uni.scss'
-	//#endif
+	// #endif
 	export default {
 		name:'comp-query',
 		props:{
@@ -51,7 +49,7 @@
 			bgcolor:{
 				type:String,
 				default(){
-					return '#f3f3f3'
+					return '#f4f6fa'
 				}
 			},
 			textColor:{
@@ -70,12 +68,12 @@
 				calendar:{
 					minDate:moment().subtract(1, 'month').format('YYYY-MM'),  //可选最小月份
 					maxDate:moment().add(10, 'days').format('YYYY-MM-DD'),    //可选最大天数
-					//#ifndef APP-PLUS                 //除了在APP下执行
+					// #ifndef APP-PLUS                 //除了在APP下执行
 						color:main_color,
-					//#endif
-					//#ifdef APP-PLUS                   //只在APP下执行
+					// #endif
+					// #ifdef APP-PLUS                   //只在APP下执行
 						color:'#35BD00',
-					//#endif
+					// #endif
 					text:'请选择日期',
 					mode: 'range',
 					show:false,
@@ -108,18 +106,21 @@
 					case '自定义':
 						this.state=e
 						this.calendar.show=true ; break;
+					case '搜索':
+						this.$emit('clickShowComp'); break;
 					default :
 						return
 				}
 			}
 		},
 		mounted() {
-			// this.ChangeCalendar({name:'aa'})
+			// this.changeCalendar({name:'aa'})
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	@import "@/style/iconfont.css";
 	.query{
 		display: flex;
 		align-items: center;
@@ -138,9 +139,6 @@
 			padding: 0 0rpx;
 			border: none;
 			font-size: 24rpx;
-			&-hidden{
-				display: none !important;
-			}
 		}
 	}
 	uni-button:after{

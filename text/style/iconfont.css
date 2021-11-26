@@ -6,9 +6,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@font-face {      //字体文件图标
+@font-face {
   font-family: 'iconfont';  /* Project id 2960249 */
-  src: url('//at.alicdn.com/t/font_2960249_4ntfb6mikgd.woff2?t=1637665977636') format('woff2'),
-       url('//at.alicdn.com/t/font_2960249_4ntfb6mikgd.woff?t=1637665977636') format('woff'),
-       url('//at.alicdn.com/t/font_2960249_4ntfb6mikgd.ttf?t=1637665977636') format('truetype');
+  src: url('//at.alicdn.com/t/font_2960249_tp5764152m.woff2?t=1637890880909') format('woff2'),
+       url('//at.alicdn.com/t/font_2960249_tp5764152m.woff?t=1637890880909') format('woff'),
+       url('//at.alicdn.com/t/font_2960249_tp5764152m.ttf?t=1637890880909') format('truetype');
 }

@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view>
-			<image src="http://lizuishuai.top/uni-app/images/banner.png"         class="pic" @click="handClickChang"></image>
+			<image src="http://lizuishuai.top/uni-app/images/banner.png"class="pic"></image>
 		</view>
 		<view class="model">
 		    <text class="model_text">最常用快递员</text>
@@ -38,7 +38,6 @@
 				uni.navigateTo({
 				    url: './Indent',
 				});
-				console.log('wadwa')
 			}
 		}
 	}
