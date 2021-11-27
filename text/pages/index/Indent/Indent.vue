@@ -7,8 +7,9 @@
 		:activeStyle="{
 			color: '#35BD00',
 			fontWeight: 'bold',
-			transform: 'scale(1.05)'
-		}"></u-tabs>
+			transform: 'scale(1.05)'}"
+			@click="handChangIsSend" 
+			></u-tabs>
 		<!-- #ifdef H5  -->
 		<keep-alive>
 			<transition name="tran" mode="out-in">
@@ -41,10 +42,7 @@
 		>
 			<view class="u-demo-block__content">
 				<!-- 当前数据显示 -->
-				<dataList> </dataList> 
-				<dataList> </dataList>
-				<dataList> </dataList>
-				<dataList> </dataList>
+				<dataList :expressItem="item" v-for="(item,index) of expressData" :key="item.number" > </dataList> 
 				<!-- 设置加载状态 -->
 				<u-loadmore           
 					v-show="loadState.loadisShow"
@@ -74,10 +72,12 @@
 				childState:{
 					state:'近一个月'
 				},                    //当前按钮处于的状态
-				calendarDate:{},
+				calendarDate:{},             //子组件传来的日期数据
 				state:'send',
 				isload:false,                        //当前是否处于刷新状态 
+				isSend:'send',                       //当前处于寄出还是收到状态
 				showComponent:'comp-query',        //用于显示当前搜索组件
+				expressData:[],                  //用于保存后端传输的所有快递数据
 				list2: [{
 				    name: '我寄出的'
 				}, {
@@ -101,11 +101,15 @@
 		watch:{
 			async isload(next,old){
 				if(next == false) return
-				const data=await http.request({
+				const { data }=await http.request({
 					method:'GET',
-					url:'/getexpress'
+					url:'/getexpress',
+					params:{
+						isSend:this.isSend
+					}
 				})
-				console.log(data)
+				this.expressData=data
+				// console.log(this.expressData)
 				this.isload=false
 			}
 		},
@@ -121,8 +125,14 @@
 			 handClickChangeState(state){
 				 this.state=state
 			},
-			change4(index) {
-				 this.current4 = index
+			//当点击寄出还是收到时触发的事件
+			handChangIsSend(e){
+				if(e.name=='我收到的'){
+					this.isSend='receive'
+				}else{
+					this.isSend='send'
+				}
+				this.isload=true
 			},
 			//子组件修改state更改当前按钮的状态
 			changChildState(value){

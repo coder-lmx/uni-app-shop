@@ -3175,7 +3175,12 @@ var render = function() {
     [
       _c("u-tabs", {
         staticStyle: { "background-color": "#FFFFFF" },
-        attrs: { _i: 1 }
+        attrs: { _i: 1 },
+        on: {
+          click: function($event) {
+            return _vm.$handleViewEvent($event)
+          }
+        }
       }),
       _c(_vm._$g(2, "is"), {
         tag: "component",
@@ -3206,6 +3211,7 @@ var render = function() {
           attrs: {
             "scroll-y": "true",
             "refresher-enabled": true,
+            "refresher-background": "#f4f6fa",
             "refresher-triggered": _vm._$g(6, "a-refresher-triggered"),
             _i: 6
           },
@@ -3220,7 +3226,9 @@ var render = function() {
             "v-uni-view",
             { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
             [
-              _c("dataList", { attrs: { _i: 8 } }),
+              _vm._l(_vm._$g(8, "f"), function(item, index, $20, $30) {
+                return _c("dataList", { key: item, attrs: { _i: "8-" + $30 } })
+              }),
               _c("u-loadmore", {
                 directives: [
                   {
@@ -3233,7 +3241,7 @@ var render = function() {
                 attrs: { _i: 9 }
               })
             ],
-            1
+            2
           )
         ],
         1
@@ -8325,6 +8333,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uButton: __webpack_require__(/*! uview-ui/components/u-button/u-button.vue */ 198).default
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -8337,7 +8366,7 @@ var render = function() {
         "v-uni-view",
         { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
         [
-          _vm._v("运单号：SF1336024630268"),
+          _vm._v("运单号：" + _vm._$g(1, "t0-0")),
           _c("v-uni-image", {
             staticClass: _vm._$g(2, "sc"),
             attrs: { src: "/assets/svg/copy.svg", mode: "'aspectFit'", _i: 2 }
@@ -8356,9 +8385,11 @@ var render = function() {
               _c(
                 "v-uni-text",
                 { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
-                [_vm._v("杭州市")]
+                [_vm._v(_vm._$g(5, "t0-0"))]
               ),
-              _c("v-uni-text", { attrs: { _i: 6 } }, [_vm._v("小惠")])
+              _c("v-uni-text", { attrs: { _i: 6 } }, [
+                _vm._v(_vm._$g(6, "t0-0"))
+              ])
             ],
             1
           ),
@@ -8374,7 +8405,7 @@ var render = function() {
               _c(
                 "v-uni-text",
                 { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
-                [_vm._v("已签收")]
+                [_vm._v(_vm._$g(9, "t0-0"))]
               )
             ],
             1
@@ -8386,9 +8417,43 @@ var render = function() {
               _c(
                 "v-uni-text",
                 { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
-                [_vm._v("曲靖市")]
+                [_vm._v(_vm._$g(11, "t0-0"))]
               ),
-              _c("v-uni-text", { attrs: { _i: 12 } }, [_vm._v("刘凯")])
+              _c("v-uni-text", { attrs: { _i: 12 } }, [
+                _vm._v(_vm._$g(12, "t0-0"))
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _c("v-uni-view", { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } }, [
+        _vm._v("签收时间：" + _vm._$g(13, "t0-0"))
+      ]),
+      _c(
+        "v-uni-view",
+        { staticClass: _vm._$g(14, "sc"), attrs: { _i: 14 } },
+        [
+          _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(15, "sc"), attrs: { _i: 15 } },
+            [
+              _c("u-button", {
+                staticClass: _vm._$g(16, "sc"),
+                attrs: { _i: 16 }
+              })
+            ],
+            1
+          ),
+          _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(17, "sc"), attrs: { _i: 17 } },
+            [
+              _c("u-button", {
+                staticClass: _vm._$g(18, "sc"),
+                attrs: { _i: 18 }
+              })
             ],
             1
           )
@@ -8432,7 +8497,7 @@ __webpack_require__.r(__webpack_exports__);
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 
 {
-  name: "data-list",
+  name: "data-list", props: ["expressItem"],
   data: function data() {
     return {
       wxsProps: {} };
@@ -8487,7 +8552,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 16);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n[data-v-78201065]:export {\r\n  main_color: #35BD00;\r\n  uni-bg-color: #f4f6fa;\r\n  uni-font-size-28: 28rpx;\n}\n.express-data[data-v-78201065] {\r\n  padding: 20rpx;\r\n  color: #999999;\r\n  background-color: #ffffff;\n}\n.number[data-v-78201065] {\r\n  font-size: 20rpx;\r\n  margin-left: 0px;\n}\n.number_img[data-v-78201065] {\r\n  width: 25rpx;\r\n  height: 25rpx;\r\n  margin-left: 15rpx;\n}\n.main[data-v-78201065] {\r\n  display: flex;\r\n  justify-content: center;\n}\n.main_model[data-v-78201065] {\r\n  display: flex;\r\n  flex-direction: column;\r\n  text-align: center;\r\n  font-size: 30rpx;\r\n  padding: 40rpx;\n}\n.main_model_city[data-v-78201065] {\r\n  font-weight: 500;\r\n  font-size: 40rpx;\r\n  margin-bottom: 10rpx;\r\n  color: #626161;\n}\n.main_model_city-red[data-v-78201065] {\r\n  color: red;\n}\n.main_model_city-block[data-v-78201065] {\r\n  color: #000000;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n[data-v-78201065]:export {\r\n  main_color: #35BD00;\r\n  uni-bg-color: #f4f6fa;\r\n  uni-font-size-28: 28rpx;\n}\n.express-data[data-v-78201065] {\r\n  margin-bottom: 20rpx;\r\n  padding: 20rpx;\r\n  color: #999999;\r\n  background-color: #ffffff;\n}\n.number[data-v-78201065] {\r\n  font-size: 20rpx;\r\n  color: #626161;\r\n  margin-left: 0px;\n}\n.number_img[data-v-78201065] {\r\n  width: 25rpx;\r\n  height: 25rpx;\r\n  margin-left: 15rpx;\n}\n.main[data-v-78201065] {\r\n  display: flex;\r\n  justify-content: center;\n}\n.main_model[data-v-78201065] {\r\n  display: flex;\r\n  flex-direction: column;\r\n  text-align: center;\r\n  font-size: 30rpx;\r\n  padding: 40rpx;\n}\n.main_model_city[data-v-78201065] {\r\n  font-weight: 500;\r\n  font-size: 40rpx;\r\n  margin-bottom: 10rpx;\r\n  max-width: 200rpx;\r\n  color: #626161;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  white-space: nowrap;\n}\n.main_model_city-red[data-v-78201065] {\r\n  color: red;\n}\n.main_model_city-block[data-v-78201065] {\r\n  color: #000000;\n}\n.date[data-v-78201065] {\r\n  font-size: 28rpx;\r\n  padding-bottom: 10rpx;\r\n  border-bottom: 2rpx solid #999999;\n}\n.foot[data-v-78201065] {\r\n  display: flex;\r\n  justify-content: flex-end;\n}\n.foot_bt[data-v-78201065] {\r\n  width: 150rpx;\r\n  height: 50rpx;\r\n  margin: 14rpx 4rpx 0 14rpx;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -8539,7 +8604,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 16);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n[data-v-641a6e4e]:export {\r\n  main_color: #35BD00;\r\n  uni-bg-color: #f4f6fa;\r\n  uni-font-size-28: 28rpx;\n}\n.scrll[data-v-641a6e4e] {\r\n  box-sizing: border-box;\r\n  padding: 0 20rpx 0;\r\n  max-height: 1100rpx;\n}\n.tran-enter-active[data-v-641a6e4e], .tran-leave-active[data-v-641a6e4e] {\r\n  transition: all .1s;\n}\n.tran-leave-to[data-v-641a6e4e] {\r\n  -webkit-transform: translateX(-100%);\r\n          transform: translateX(-100%);\n}\n.tran-enter[data-v-641a6e4e] {\r\n  -webkit-transform: translateX(100%);\r\n          transform: translateX(100%);\n}\n.prompt[data-v-641a6e4e] {\r\n  padding: 20rpx;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n[data-v-641a6e4e]:export {\r\n  main_color: #35BD00;\r\n  uni-bg-color: #f4f6fa;\r\n  uni-font-size-28: 28rpx;\n}\n.scrll[data-v-641a6e4e] {\r\n  box-sizing: border-box;\r\n  padding: 0 20rpx 0;\r\n  max-height: 900rpx;\n}\n.tran-enter-active[data-v-641a6e4e], .tran-leave-active[data-v-641a6e4e] {\r\n  transition: all .1s;\n}\n.tran-leave-to[data-v-641a6e4e] {\r\n  -webkit-transform: translateX(-100%);\r\n          transform: translateX(-100%);\n}\n.tran-enter[data-v-641a6e4e] {\r\n  -webkit-transform: translateX(100%);\r\n          transform: translateX(100%);\n}\n.prompt[data-v-641a6e4e] {\r\n  padding: 20rpx;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

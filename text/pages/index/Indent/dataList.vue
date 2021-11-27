@@ -1,21 +1,21 @@
 <template>
-	<view class="express-data">
-		<view class="number"> 运单号：SF1336024630268 <image src="@/assets/svg/copy.svg" mode="'aspectFit'" class="number_img"></image></view>
+	<view class="express-data" >
+		<view class="number"> 运单号：{{expressItem.number}} <image src="@/assets/svg/copy.svg" mode="'aspectFit'" class="number_img"></image></view>
 		<view class="main">
 			<view class="main_model">
-				<text class="main_model_city">杭州市</text>
-				<text>小惠</text>
+				<text class="main_model_city">{{expressItem.sendCity}}</text>
+				<text>{{expressItem.sendPerson}}</text>
 			</view>
 			<view class="main_model">
 				<text class="main_model_city main_model_city-red">--------></text>
-				<text class="main_model_city-block">已签收</text>
+				<text class="main_model_city-block">{{expressItem.sign}}</text>
 			</view>
 			<view class="main_model">
-				<text class="main_model_city">曲靖市</text>
-				<text>刘凯</text>
+				<text class="main_model_city">{{expressItem.receiveCity}}</text>
+				<text>{{expressItem.receivePerson}}</text>
 			</view>
 		</view>
-		<view class="date">签收时间：2021-08-15 </view>
+		<view class="date">签收时间：{{expressItem.date}} </view>
 		<view class="foot">
 			<view class="u-page__button-item">
 				<u-button
@@ -43,7 +43,12 @@
 
 <script>
 	export default {
-		name:'data-list'
+		name:'data-list',
+		props:{
+			expressItem:{
+				type:Object
+			}
+		}
 	}
 </script>
 
@@ -78,7 +83,9 @@
 				font-weight: 500;
 				font-size: 40rpx;
 				margin-bottom: 10rpx;
+				max-width: 200rpx;
 				color: $uni-font-color-1;
+				@include textover;
 				&-red{
 					color: red;
 				}
