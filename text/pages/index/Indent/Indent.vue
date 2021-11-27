@@ -1,55 +1,63 @@
 <template>
 	<view>
-		<!-- <text class="indent_text" 
-		:class="state=='send'?'indent_text-hove':'' " 
-		@click="handClickChangeState('send')">
-			我寄出的
-		</text>
-		<text class="indent_text"  
-		:class="state=='receive'?'indent_text-hove':''"
-		@click="handClickChangeState('receive')">
-			我收到的
-		</text> -->
-		    <u-tabs  style=" background-color: #FFFFFF;"
-			:list="list2" 
-			lineColor="#35BD00"
-			:activeStyle="{
-				color: '#35BD00',
-				fontWeight: 'bold',
-				transform: 'scale(1.05)'
-			}"></u-tabs>
-			<!-- #ifdef H5  -->
-			<keep-alive>
-				<transition name="tran" mode="out-in">
-					<component :is="showComponent"  @clickShowComp="changeShowComponent"></component>
-				</transition>
-			</keep-alive>
-			<!-- #endif -->
-			<!-- #ifdef APP-PLUS -->
-				<component :is="showComponent" @clickShowComp="changeShowComponent"></component>
-			<!-- #endif -->
-			<scroll-view 
-			scroll-y="true" 
-			:refresher-enabled="true"           	 
-			class="scrlll"
-			:refresher-triggered="isload"        	
-			@refresherrefresh="refresherrefresh"   
-			>
-				<view class="u-demo-block__content">
-					<dataList> </dataList>
-					<!-- 设置加载状态 -->
-					<u-loadmore           
-						v-show="loadState.loadisShow"
-						:status="loadState.nomore"
-						:nomoreText="loadState.nomoreText"
-						loadingText="先等会,我先加载下"
-						fontSize="30rpx"
-						color="#35BD00"
-						height="40"
-						:line="loadState.isLine"
-					></u-loadmore>
-				</view>
-			</scroll-view>
+		<!-- 当前寄出还是收到显示组件 -->
+		<u-tabs  style=" background-color: #FFFFFF;"
+		:list="list2" 
+		lineColor="#35BD00"
+		:activeStyle="{
+			color: '#35BD00',
+			fontWeight: 'bold',
+			transform: 'scale(1.05)'
+		}"></u-tabs>
+		<!-- #ifdef H5  -->
+		<keep-alive>
+			<transition name="tran" mode="out-in">
+				<component :is="showComponent"  @clickShowComp="changeShowComponent"></component>
+			</transition>
+		</keep-alive>
+		<!-- #endif -->
+		<!-- #ifdef APP-PLUS -->
+			<component :is="showComponent" @clickShowComp="changeShowComponent"></component>
+		<!-- #endif -->
+		<!-- 提示语显示 -->
+		<view class="u-demo-block prompt">
+			<view class="u-demo-block__content">
+				<u-notice-bar
+					:text="promptState.text"
+					:color="promptState.color"
+					direction="column"
+					mode="closable"
+				></u-notice-bar>
+			</view>
+		</view>
+		
+		<scroll-view 
+		scroll-y="true" 
+		:refresher-enabled="true"       
+		refresher-background="#f4f6fa"
+		class="scrll"
+		:refresher-triggered="isload"        	
+		@refresherrefresh="refresherrefresh"   
+		>
+			<view class="u-demo-block__content">
+				<!-- 当前数据显示 -->
+				<dataList> </dataList> 
+				<dataList> </dataList>
+				<dataList> </dataList>
+				<dataList> </dataList>
+				<!-- 设置加载状态 -->
+				<u-loadmore           
+					v-show="loadState.loadisShow"
+					:status="loadState.nomore"
+					:nomoreText="loadState.nomoreText"
+					loadingText="先等会,我先加载下"
+					fontSize="30rpx"
+					color="#35BD00"
+					height="40"
+					:line="loadState.isLine"
+				></u-loadmore>
+			</view>
+		</scroll-view>
 	</view>
 	
 </template>
@@ -66,7 +74,7 @@
 				childState:{
 					state:'近一个月'
 				},                    //当前按钮处于的状态
-				calendarDate:{}, 
+				calendarDate:{},
 				state:'send',
 				isload:false,                        //当前是否处于刷新状态 
 				showComponent:'comp-query',        //用于显示当前搜索组件
@@ -78,6 +86,10 @@
 				        isDot: true
 				    }
 				}],
+				promptState:{                   //提示语状态
+					text:['这是一条提示语'],     
+					color:'#35BD00'
+				},
 				loadState:{                        //设置加载状态
 					loadisShow:true,
 					nomore:"nomore" ,
@@ -125,6 +137,7 @@
 			changeShowComponent(){
 				if(this.showComponent != 'comp-query') this.isload=true
 				if(this.showComponent == 'comp-query'){
+					this.childState.state='近一个月'
 					this.showComponent = 'comp-search' 
 				}else{
 					this.showComponent = 'comp-query'
@@ -134,16 +147,19 @@
 				this.isload=true
 			}
 		},
-		onReady:function (){	 
-			this.isload=true
+		onReady:function (){
+			setTimeout(()=>{
+				this.isload=true
+			},500)
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.scrlll{
-		max-height:1100rpx;
-		text-align: center;
+	.scrll{
+		box-sizing: border-box;
+		padding: 0 20rpx 0;
+		max-height:900rpx;
 	}
 	.tran-enter-active, .tran-leave-active {
 	  transition: all .1s;
@@ -153,5 +169,8 @@
 	}
 	.tran-enter{
 		transform: translateX(100%);
+	}
+	.prompt{
+		padding: 20rpx;
 	}
 </style>

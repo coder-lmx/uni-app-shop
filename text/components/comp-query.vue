@@ -31,9 +31,9 @@
 
 <script>
 	import  moment  from '@/common/moment.js'
-	/* #ifndef APP-PLUS */
-	import main_color from '@/uni.scss'
-	/* #endif */
+	 //#ifndef APP-PLUS 
+	 import main_color from '@/uni.scss'
+	// #endif 
 	export default {
 		name:'comp-query',
 		props:{
@@ -67,10 +67,10 @@
 				calendar:{
 					minDate:moment().subtract(1, 'month').format('YYYY-MM'),  //可选最小月份
 					maxDate:moment().add(10, 'days').format('YYYY-MM-DD'),    //可选最大天数
-					// #ifndef APP-PLUS                 //除了在APP下执行
-						 color:main_color,
+					// #ifndef APP-PLUS                 
+						 color:main_color.main_color,
 					// #endif
-					// #ifdef APP-PLUS                   //只在APP下执行
+					// #ifdef APP-PLUS                 
 						color:'#35BD00',
 					// #endif
 					text:'请选择日期',
@@ -112,6 +112,7 @@
 			}
 		},
 		mounted() {
+			// console.log(main_color.main_color)
 			// this.changeCalendar({name:'aa'})
 		}
 	}
