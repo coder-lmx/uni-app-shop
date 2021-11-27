@@ -28,9 +28,15 @@
 			<!-- #ifdef APP-PLUS -->
 				<component :is="showComponent" @clickShowComp="changeShowComponent"></component>
 			<!-- #endif -->
-			<scroll-view scroll-y="true" :refresher-enabled="true" class="scrlll" :refresher-triggered="true">
+			<scroll-view 
+			scroll-y="true" 
+			:refresher-enabled="true"           	 
+			class="scrlll"
+			:refresher-triggered="isload"        	
+			@refresherrefresh="refresherrefresh"   
+			>
 				<view class="u-demo-block__content">
-					
+					<dataList> </dataList>
 					<!-- 设置加载状态 -->
 					<u-loadmore           
 						v-show="loadState.loadisShow"
@@ -51,14 +57,19 @@
 <script>
 	import compQuery from '@/components/comp-query.vue'
 	import compSearch from '@/components/comp-search.vue'
+	import dataList from '@/pages/index/Indent/dataList.vue'
 	import http from '@/common/baseRequest.js'
 	export default {
-		components:{compQuery,compSearch},
+		components:{compQuery,compSearch,dataList},
 		data(){
 			return{
-				calendarDate:{},
+				childState:{
+					state:'近一个月'
+				},                    //当前按钮处于的状态
+				calendarDate:{}, 
 				state:'send',
-				showComponent:'comp-query',
+				isload:false,                        //当前是否处于刷新状态 
+				showComponent:'comp-query',        //用于显示当前搜索组件
 				list2: [{
 				    name: '我寄出的'
 				}, {
@@ -75,8 +86,21 @@
 				}
 			}
 		},
+		watch:{
+			async isload(next,old){
+				if(next == false) return
+				const data=await http.request({
+					method:'GET',
+					url:'/getexpress'
+				})
+				console.log(data)
+				this.isload=false
+			}
+		},
 		provide(){
 			return {
+				childState:this.childState,
+				changChildState:this.changChildState,
 				calendarDate:this.calendarDate,
 				ChangeCalendar:this.ChangeCalendar
 			}
@@ -88,6 +112,10 @@
 			change4(index) {
 				 this.current4 = index
 			},
+			//子组件修改state更改当前按钮的状态
+			changChildState(value){
+				this.childState.state=value
+			},
 			//将组件传来的数据添加到数组中
 			changeCalendar(data){
 				this.calendarDate=Object.assign({},data)
@@ -95,19 +123,19 @@
 			},
 			//切换搜索组件的显示
 			changeShowComponent(){
+				if(this.showComponent != 'comp-query') this.isload=true
 				if(this.showComponent == 'comp-query'){
 					this.showComponent = 'comp-search' 
 				}else{
 					this.showComponent = 'comp-query'
 				}
+			},
+			refresherrefresh(){                    //下拉刷新触发事件
+				this.isload=true
 			}
 		},
-		 onShow:async ()=>{
-			 const {data}= await http.request({
-				method:'GET',
-				url:'/getexpress'
-			})
-			console.log(data)
+		onReady:function (){	 
+			this.isload=true
 		}
 	}
 </script>

@@ -4,8 +4,8 @@
 			<button 
 			class="query_bt iconfont"
 			:style="{
-				'background-color':state == item? calendar.color :bgcolor ,
-				'color': state == item? '#ffffff':textColor}"
+				'background-color':childState.state == item? calendar.color :bgcolor ,
+				'color': childState.state == item? '#ffffff':textColor}"
 			:class="{
 				'btn-radius':shape == 'circle'}" 
 			v-for="(item,index) of this.dateList"
@@ -61,7 +61,6 @@
 		},
 		data(){
 			return{
-				state:'近一个月',
 				dateList:['今天','近七天','近一个月','自定义','搜索'],
 				defaultDate:[],  //选择时保存日期
 				calendarList:[],
@@ -83,11 +82,11 @@
 		watch:{
 			calendarList(){
 				if(this.calendarList.length==0){
-					this.state='近一个月'
+					this.childState.state='近一个月'
 				}
 			}
 		},
-		inject:['calendarDate','ChangeCalendar'] ,
+		inject:['calendarDate','ChangeCalendar','childState','changChildState'] ,
 		methods:{
 			//点击遮罩成进行隐藏
 			close(e){
@@ -101,10 +100,9 @@
 				this.calendar.show=false
 			},
 			handClickChange(e){
-				this.state=e
+				this.changChildState(e)
 				switch(e){
 					case '自定义':
-						this.state=e
 						this.calendar.show=true ; break;
 					case '搜索':
 						this.$emit('clickShowComp'); break;

@@ -22,7 +22,7 @@
             }
             
         },{
-			"path" : "pages/index/Indent",
+			"path" : "pages/index/Indent/Indent",
 			"style" :{
 			    "navigationBarTitleText": "我的快递",
 				"navigationStyle": "default",

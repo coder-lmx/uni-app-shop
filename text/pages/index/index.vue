@@ -36,7 +36,7 @@
 			},
 			handClickIndent(){
 				uni.navigateTo({
-				    url: './Indent',
+				    url: './Indent/Indent',
 				});
 			}
 		}
