@@ -4,8 +4,8 @@
 			<button 
 			class="query_bt iconfont"
 			:style="{
-				'background-color':childState.state == item? calendar.color :bgcolor ,
-				'color': childState.state == item? '#ffffff':textColor}"
+				'background-color':state == item? calendar.color :bgcolor ,
+				'color': state == item? '#ffffff':textColor}"
 			:class="{
 				'btn-radius':shape == 'circle'}" 
 			v-for="(item,index) of this.dateList"
@@ -20,7 +20,7 @@
 			:maxDate="calendar.maxDate" 
 			:color="calendar.color" 
 			:closeOnClickOverlay="true"
-			:defaultDate="defaultDate"
+			:defaultDate="calendarList"
 			:maxRange="10"
 			@close="close"
 			@confirm="success"
@@ -61,9 +61,9 @@
 		},
 		data(){
 			return{
-				dateList:['今天','近七天','近一个月','自定义','搜索'],
-				defaultDate:[],  //选择时保存日期
-				calendarList:[],
+				state:'近一个月',    //当前组件的状态显示
+				dateList:['今天','近七天','近一个月','自定义','搜索'], 
+				calendarList:[],       //选择时保存日期
 				calendar:{
 					minDate:moment().subtract(1, 'month').format('YYYY-MM'),  //可选最小月份
 					maxDate:moment().add(10, 'days').format('YYYY-MM-DD'),    //可选最大天数
@@ -82,11 +82,11 @@
 		watch:{
 			calendarList(){
 				if(this.calendarList.length==0){
-					this.childState.state='近一个月'
+					this.state='近一个月'
 				}
 			}
 		},
-		inject:['calendarDate','ChangeCalendar','childState','changChildState'] ,
+		inject:['changeCalendar','changChildState'] ,
 		methods:{
 			//点击遮罩成进行隐藏
 			close(e){
@@ -95,12 +95,14 @@
 			},
 			//点击确定时触发
 			success(e){
-				this.defaultDate=[...e]
-				this.calendarList=e
+				this.calendarList=[...e]
+				this.changeCalendar(e)
 				this.calendar.show=false
 			},
+			//点击选项触发
 			handClickChange(e){
-				this.changChildState(e)
+				this.state=e
+				this.changChildState(e)     //更改父组件的数据状态
 				switch(e){
 					case '自定义':
 						this.calendar.show=true ; break;

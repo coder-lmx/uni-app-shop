@@ -69,11 +69,12 @@
 		components:{compQuery,compSearch,dataList},
 		data(){
 			return{
-				childState:{
-					state:'近一个月'
-				},                    //当前按钮处于的状态
-				calendarDate:{},             //子组件传来的日期数据
-				state:'send',
+				childState:{                  //用于保存子组件的英文状态用于后端传输
+					state:'NearltWeek',        //当前按钮处于的状态
+					search_text:'' ,
+					calendarDate:[],             //子组件传来的自定义日期数据
+				},                    
+				// state:'send',
 				isload:false,                        //当前是否处于刷新状态 
 				isSend:'send',                       //当前处于寄出还是收到状态
 				showComponent:'comp-query',        //用于显示当前搜索组件
@@ -104,27 +105,31 @@
 				const { data }=await http.request({
 					method:'GET',
 					url:'/getexpress',
-					params:{
-						isSend:this.isSend
+					params:{							//发送数据数据
+						isSend:this.isSend,
+						state:JSON.stringify(this.childState)             //以JSON格式发送组件所有数据
+						// state:this.childState.state,
+						// calendarDate:this.childState.calendarDate,
+						// searchText:this.calendarDate.search_text
 					}
 				})
 				this.expressData=data
 				// console.log(this.expressData)
 				this.isload=false
+				if(data.length>0){
+					this.loadState=Object.assign(this.loadState,{ nomore:'loadmore' })
+					
+				}
 			}
 		},
 		provide(){
 			return {
-				childState:this.childState,
 				changChildState:this.changChildState,
-				calendarDate:this.calendarDate,
-				ChangeCalendar:this.ChangeCalendar
+				changeCalendar:this.changeCalendar,
+				setSearchText:this.setSearchText
 			}
 		},
 		methods:{
-			 handClickChangeState(state){
-				 this.state=state
-			},
 			//当点击寄出还是收到时触发的事件
 			handChangIsSend(e){
 				if(e.name=='我收到的'){
@@ -136,22 +141,38 @@
 			},
 			//子组件修改state更改当前按钮的状态
 			changChildState(value){
-				this.childState.state=value
+				this.childState.calendarDate=[]
+				switch(value){
+					case '今天': this.childState.state ='Today';break;
+					case '近七天':this.childState.state ='NearlyWeek';break;
+					case '近一个月':this.childState.state ='NearlyMonth';break;
+					case '搜索':this.childState.state ='Search';break;
+					default:this.childState.state ='Custom';
+				}
+				if(value =='搜索' || value =='自定义')
+				return ;
+				this.isload=true
 			},
 			//将组件传来的数据添加到数组中
 			changeCalendar(data){
-				this.calendarDate=Object.assign({},data)
-				console.log(this.calendarDate)
+				this.childState.calendarDate=[...data]
+				this.isload=true
 			},
 			//切换搜索组件的显示
 			changeShowComponent(){
-				if(this.showComponent != 'comp-query') this.isload=true
+				if(this.showComponent != 'comp-query') this.isload=true       //如果当前是搜索组件则不进行加载
 				if(this.showComponent == 'comp-query'){
 					this.childState.state='近一个月'
 					this.showComponent = 'comp-search' 
 				}else{
 					this.showComponent = 'comp-query'
 				}
+			},
+			//用于获取搜索的内容且将其赋值
+			setSearchText(value){
+				// console.log(value)
+				this.childState.search_text=value
+				this.isload=true
 			},
 			refresherrefresh(){                    //下拉刷新触发事件
 				this.isload=true
