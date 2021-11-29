@@ -9,7 +9,7 @@
 				@click="handClickCopy(expressItem.number)" 
 			></image>
 		</view>
-		<navigator url="../DataItem/DataItem">
+		<navigator url="/pages/index/DataItem/DataItem">
 			<view class="main">
 				<view class="main_model">
 					<text class="main_model_city">{{expressItem.sendCity}}</text>
@@ -39,6 +39,7 @@
 			</view>
 			<view class="u-page__button-item">
 				<u-button
+					v-show="expressItem.sign=='已签收'? true :false "
 					text="删除"
 					size="normal"
 					plain

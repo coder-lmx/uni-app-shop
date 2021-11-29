@@ -12,13 +12,13 @@
 		        <input type="text" class="nav_input_text" placeholder="发件人信息" maxlength="30"/>
 		        <text class="nav_input_ico"></text>
 		        <view  bindtap="handGetPhone">
-		            <image src="../../assets/people-icon-tool-gerenliebiao.png" class="nav_input_pic"></image>
+		            <image src="../../assets/people-icon-tool-gerenliebiao.png" class="nav_input_pic" @click="handClickMess"></image>
 		        </view>
 		    </view>
 		    <view class="nav_input">
 		        <input type="text" class="nav_input_text" placeholder="收件人信息" maxlength="30"/>
 		        <text class="nav_input_ico"></text>
-		        <image src="../../assets/people-icon-tool-gerenliebiao.png" class="nav_input_pic"></image>
+		        <image src="../../assets/people-icon-tool-gerenliebiao.png" class="nav_input_pic" @click="handClickScan"></image>
 		    </view>
 		    <button class="bt">下一步</button>
 		    <view class="foot">
@@ -37,6 +37,9 @@
 		            <text>极速官方保证</text>
 		        </view>
 		    </view>
+			<u-toast
+				ref="uToast"
+			></u-toast>
 	</view>
 </template>
 
@@ -46,6 +49,33 @@
 			return {
 				
 			};
+		},
+		methods:{
+			handClickMess(){
+				//#ifdef H5
+					this.$refs.uToast.show({
+						type: 'error',
+						message: "请在客户端下使用",
+						duration:'1000'
+					})
+				//#endif
+				//#ifndef H5
+					uni.addPhoneContact({
+					    nickName: '昵称',
+					    lastName: '姓',
+					    firstName: '名',
+					    remark: '备注',
+					    mobilePhoneNumber: '114',
+					    weChatNumber: 'wx123',
+					    success: function () {
+					        console.log('success');
+					    },
+					    fail: function () {
+					        console.log('fail');
+					    }
+					});
+				//#endif
+			}
 		}
 	}
 </script>

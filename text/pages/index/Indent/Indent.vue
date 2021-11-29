@@ -66,7 +66,7 @@
 <script>
 	import compQuery from '@/components/comp-query.vue'
 	import compSearch from '@/components/comp-search.vue'
-	import dataList from '@/pages/index/Indent/dataList.vue'
+	import dataList from '@/components/comp-dataList.vue'
 	import http from '@/common/baseRequest.js'
 	export default {
 		components:{compQuery,compSearch,dataList},

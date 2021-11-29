@@ -24,32 +24,57 @@
 					></u-icon>
 			</view>
 		</view>
-		<view class="box_big">
-			<image src="../../assets/big-img-big-img.png" class="box_big_pic"></image>
+		<view class="box_big" v-show="showData">
+			<image 
+				src="../../assets/big-img-big-img.png" 
+				class="box_big_pic"
+				></image>
 			<view>抱歉，还没有查询到您的快递哦</view>
 		</view>
 		<u-toast 
 			ref="uToast"
 		></u-toast>
+		<view class="data" v-show="!showData">
+			<dataList
+			:expressItem="item" 
+			v-for="(item,index) of expressData" 
+			:key="item.number" 
+			> </dataList>
+		</view>
 	</view>
 </template>
 
 <script>
+	import dataList from '@/components/comp-dataList.vue'
+	import http from '@/common/baseRequest.js'
 	export default {
+		components:{dataList},
 		data() {
 			return {
-				text:''
+				text:'',
+				expressData:[]
 			};
 		},
 		computed:{
 			showIco: function (){
 				return Boolean(this.text)
+			},
+			showData:function(){
+				return this.expressData.length >0 ? false :true
 			}
 		},
 		methods:{
 			//点击搜索发送请求
-			handClickSearch(){
-				console.log('dwadw')
+			async handClickSearch(){
+				const {data}=await http.request({
+					method:'GET',
+					url:'/searchdata',
+					params:{
+						number:this.text
+					}
+				})
+				this.expressData=data
+				console.log(this.expressData)
 			},
 			//点击扫码时执行
 			handClickScan(){
@@ -123,6 +148,9 @@
 		width: 332rpx;
 		height: 332rpx;
 	}
+}
+.data{
+	padding: 20rpx 20rpx ;
 }
 
 </style>
