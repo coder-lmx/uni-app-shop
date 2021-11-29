@@ -1,20 +1,30 @@
 <template>
 	<view class="express-data" >
-		<view class="number"> 运单号：{{expressItem.number}} <image src="@/assets/svg/copy.svg" mode="'aspectFit'" class="number_img"></image></view>
-		<view class="main">
-			<view class="main_model">
-				<text class="main_model_city">{{expressItem.sendCity}}</text>
-				<text>{{expressItem.sendPerson}}</text>
-			</view>
-			<view class="main_model">
-				<text class="main_model_city main_model_city-red">--------></text>
-				<text class="main_model_city-block">{{expressItem.sign}}</text>
-			</view>
-			<view class="main_model">
-				<text class="main_model_city">{{expressItem.receiveCity}}</text>
-				<text>{{expressItem.receivePerson}}</text>
-			</view>
+		<view class="number"> 
+			运单号：{{expressItem.number}} 
+			<image 
+				src="@/assets/svg/copy.svg" 
+				mode="'aspectFit'" 
+				class="number_img" 
+				@click="handClickCopy(expressItem.number)" 
+			></image>
 		</view>
+		<navigator url="../DataItem/DataItem">
+			<view class="main">
+				<view class="main_model">
+					<text class="main_model_city">{{expressItem.sendCity}}</text>
+					<text>{{expressItem.sendPerson}}</text>
+				</view>
+				<view class="main_model">
+					<text class="main_model_city main_model_city-red">--------></text>
+					<text class="main_model_city-block">{{expressItem.sign}}</text>
+				</view>
+				<view class="main_model">
+					<text class="main_model_city">{{expressItem.receiveCity}}</text>
+					<text>{{expressItem.receivePerson}}</text>
+				</view>
+			</view>
+		</navigator>
 		<view class="date">签收时间：{{expressItem.date}} </view>
 		<view class="foot">
 			<view class="u-page__button-item">
@@ -47,6 +57,21 @@
 		props:{
 			expressItem:{
 				type:Object
+			}
+		},
+		data(){
+			return{
+			}
+		},
+		methods:{
+			//点击复制按钮触发的事件
+			handClickCopy(number){
+				uni.setClipboardData({
+				    data: number,
+				    success: function () {
+				        console.log('success');
+				    }
+				});
 			}
 		}
 	}

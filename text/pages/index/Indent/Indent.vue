@@ -40,9 +40,12 @@
 		:refresher-triggered="isload"        	
 		@refresherrefresh="refresherrefresh"   
 		>
+			<!-- 当前数据显示 -->
+			<dataList 
+			:expressItem="item" 
+			v-for="(item,index) of expressData" 
+			:key="item.number" > </dataList> 
 			<view class="u-demo-block__content">
-				<!-- 当前数据显示 -->
-				<dataList :expressItem="item" v-for="(item,index) of expressData" :key="item.number" > </dataList> 
 				<!-- 设置加载状态 -->
 				<u-loadmore           
 					v-show="loadState.loadisShow"
