@@ -69,7 +69,7 @@ import http from '@/common/baseRequest.js'
 	},
 	methods:{
 		async handClikCheck(){
-			this.btState=Object(this.btState,{ disabled:true })
+			this.btState=Object.assign(this.btState,{ disabled:true,isChilk:true })       //更改按钮的状态
 			uni.showLoading({                              //加载状态
 				title: '正在获取验证码'
 			})
@@ -81,7 +81,7 @@ import http from '@/common/baseRequest.js'
 				uni.hideLoading();
 				uni.$u.toast('验证码已发送');
 			}
-			console.log(data.status)
+			console.log(this.btState.disabled)
 		}
 	}
   }
