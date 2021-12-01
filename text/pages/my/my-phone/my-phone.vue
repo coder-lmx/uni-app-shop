@@ -81,6 +81,7 @@ import http from '@/common/baseRequest.js'
 				uni.hideLoading();
 				uni.$u.toast('验证码已发送');
 			}
+			setInterval()
 			console.log(this.btState.disabled)
 		}
 	}
