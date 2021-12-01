@@ -1,15 +1,17 @@
 <template>
 	<view>
-		<view class="prson">
-			<u-avatar :src="src" size="94rpx"  class="prson_pic" ></u-avatar>
-			<view class="prson_text">
-				<p> 慕慕 </p>
-				<p class="prson_text-two"> 还有有你的个性签名哦 </p>
+		<navigator  url="/pages/my/login/login">
+			<view class="prson">
+				<u-avatar :src="src" size="94rpx"  class="prson_pic" ></u-avatar>
+				<view class="prson_text">
+					<p> 还未登入 </p>
+					<p class="prson_text-two"> 还有有你的个性签名哦 </p>
+				</view>
+				<text class="prson_ico">
+					<u-icon name="arrow-right" color="#ffffff"></u-icon>
+				</text>
 			</view>
-			<text class="prson_ico">
-				<u-icon name="arrow-right" color="#ffffff"></u-icon>
-			</text>
-		</view>
+		</navigator>
 		<view class="main">
 			<MyModel v-for="(item,index) of data" :data="item" :key="index" />	
 		</view>
@@ -22,24 +24,30 @@
 		components:{ MyModel },
 		data() {
 			return {
-				src:'../../assets/portrait-img-portrait-img.png',
+				src:'https://cdn.uviewui.com/uview/album/1.jpg',
 				data:[{
-					'iconfont':'&#xe678;',
+					'iconfont':'\ue678',
+					'title':'phone',
 					'text':'绑定手机'
 				},{
-					'iconfont':'&#xe62e;',
+					'iconfont':'\ue62e',
+					'title':'autonym',
 					'text':'我的实名'
 				},{
-					'iconfont':'&#xe673;',
+					'iconfont':'\ue673',
+					'title':'reel',
 					'text':'我的抵用卷'
 				},{
-					'iconfont':'&#xe652;',
+					'iconfont':'\ue652',
+					'title':'address',
 					'text':'常用地址'
 				},{
-					'iconfont':'&#xe8bd;',
+					'iconfont':'\ue8bd',
+					'title':'message',
 					'text':'消息中心'
 				},{
-					'iconfont':'&#xe60d;',
+					'iconfont':'\ue60d',
+					'title':'service',
 					'text':'客服服务'
 				}]
 			}; 

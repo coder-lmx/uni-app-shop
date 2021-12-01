@@ -24,6 +24,11 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.data-v-b164db24:export {
+  main_color: #35BD00;
+  uni-bg-color: #f4f6fa;
+  uni-font-size-28: 28rpx;
+}
 .main.data-v-b164db24 {
   display: flex;
   width: 100%;
@@ -35,19 +40,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
   width: 622rpx;
   height: 72rpx;
+  padding-left: 20rpx;
   margin: auto;
   background-color: #ffffff;
+  color: #999999;
 }
 .main_input.data-v-b164db24 {
-  color: #999999;
   font-size: 24rpx;
-  text-align: center;
+  flex: 1;
+}
+.main_text.data-v-b164db24 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100rpx;
+  height: 100%;
 }
 .main_pic.data-v-b164db24 {
-  width: 30rpx;
-  height: 28rpx;
   margin-right: 22rpx;
 }
 .box_big.data-v-b164db24 {
@@ -62,5 +74,8 @@
 .box_big_pic.data-v-b164db24 {
   width: 332rpx;
   height: 332rpx;
+}
+.data.data-v-b164db24 {
+  padding: 20rpx 20rpx;
 }
 

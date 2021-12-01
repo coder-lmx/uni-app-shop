@@ -15,6 +15,7 @@
 
 <style lang="scss">
 @import "uview-ui/index.scss";
+@import "@/style/iconfont.css";
 @import  "uni.scss";
 page{
 	background-color: $uni-bg-color;

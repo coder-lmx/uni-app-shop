@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['tap',[['handSkip',['$0'],['data.title']]]]]}}" class="model data-v-e136daa0" bindtap="__e"><text class="iconfont model_ico data-v-e136daa0"><rich-text nodes="{{data.iconfont}}"></rich-text></text><text class="model_text data-v-e136daa0">{{data.text}}</text></view>

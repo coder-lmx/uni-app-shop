@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view>
-			<image src="http://lizuishuai.top/uni-app/images/banner.png"class="pic"></image>
+			<image src="@/assets/banner.png"class="pic"></image>
 		</view>
 		<view class="model">
 		    <text class="model_text">最常用快递员</text>
@@ -24,7 +24,7 @@
 	export default {
 		data() {
 			return {
-				src:'../../assets/portrait-img-portrait-img.png',
+				src:'https://cdn.uviewui.com/uview/album/1.jpg',
 				title: 'Hello'
 			}
 		},
@@ -60,6 +60,9 @@
 		}
 		&_prson{
 			display: flex;
+			/* #ifdef  MP-WEIXIN */
+				flex-direction: row;
+			/* #endif */
 			justify-content: space-between;
 			align-items: center;
 			box-sizing: border-box;
@@ -77,9 +80,16 @@
 			}
 			&_addr{
 				display: flex;
+				/* #ifdef  MP-WEIXIN */
+					flex-direction: row;
+				/* #endif */
 				justify-content: space-between;
 			}
 			&_type{
+				/* #ifdef  MP-WEIXIN */
+					display: flex;
+					flex-direction: row;
+				/* #endif */
 				margin-top: 12rpx;
 				color: $uni-font-color;
 				font-size: $uni-font-size-24;

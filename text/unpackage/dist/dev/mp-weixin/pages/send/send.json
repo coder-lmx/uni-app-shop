@@ -1,5 +1,8 @@
 {
   "navigationBarTitleText": " 寄快递 ",
   "navigationBarTextStyle": "white",
-  "usingComponents": {}
+  "usingComponents": {
+    "address": "/pages/send/comp-send/address",
+    "select": "/pages/send/comp-send/select"
+  }
 }

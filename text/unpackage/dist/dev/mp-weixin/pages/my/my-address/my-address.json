@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "常用地址",
+  "enablePullDownRefresh": false,
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "u-tabs": "/uview-ui/components/u-tabs/u-tabs",
+    "u--input": "/uview-ui/components/u--input/u--input"
+  }
+}

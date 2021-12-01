@@ -24,6 +24,24 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.iconfont.data-v-0be17cc6 {
+  font-family: "iconfont" !important;
+  font-size: 42rpx;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+  font-family: 'iconfont';  /* Project id 2960249 */
+  src: url('https://at.alicdn.com/t/font_2960249_n52x1l411y.woff2?t=1638195214678') format('woff2'),
+       url('https://at.alicdn.com/t/font_2960249_n52x1l411y.woff?t=1638195214678') format('woff'),
+       url('https://at.alicdn.com/t/font_2960249_n52x1l411y.ttf?t=1638195214678') format('truetype');
+}
+.data-v-0be17cc6:export {
+  main_color: #35BD00;
+  uni-bg-color: #f4f6fa;
+  uni-font-size-28: 28rpx;
+}
 .prson.data-v-0be17cc6 {
   display: flex;
   align-items: center;
@@ -52,5 +70,8 @@
 .prson_ico_pic.data-v-0be17cc6 {
   width: 18rpx;
   height: 30rpx;
+}
+.main.data-v-0be17cc6 {
+  margin-top: 42rpx;
 }
 

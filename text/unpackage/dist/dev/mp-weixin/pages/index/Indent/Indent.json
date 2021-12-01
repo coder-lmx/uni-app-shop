@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "我的快递",
+  "navigationStyle": "default",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "u-tabs": "/uview-ui/components/u-tabs/u-tabs",
+    "u-notice-bar": "/uview-ui/components/u-notice-bar/u-notice-bar",
+    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore",
+    "comp-query": "/components/comp-query",
+    "comp-search": "/components/comp-search",
+    "data-list": "/components/comp-dataList"
+  }
+}

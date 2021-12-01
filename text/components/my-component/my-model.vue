@@ -1,19 +1,26 @@
 <template>
-	<view class="model">
-		<text class="iconfont model_ico" v-html="data.iconfont"></text>
-		<text class="model_text">{{data.text}}</text>
-	</view>
+		<view class="model" @click="handSkip(data.title)">
+			<text class="iconfont model_ico" v-html="data.iconfont"></text>
+			<text class="model_text">{{data.text}}</text>
+		</view>
 </template>
 
 <script>
 	export default {
 		name:'MyModel',
 		props:['data'],
+		methods:{
+			handSkip(title){
+				console.log(title)
+				uni.navigateTo({
+					url:`../../pages/my/my-${title}/my-${title}`
+				})
+			}
+		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	@import "../../style/iconfont.css";
 	.model{
 		display: flex;
 		align-items: center;
