@@ -181,7 +181,7 @@
 				this.isload=true
 			}
 		},
-		onReady:function (){
+		onReady(){
 			setTimeout(()=>{
 				this.isload=true
 			},500)
@@ -193,7 +193,7 @@
 	.scrll{
 		box-sizing: border-box;
 		padding: 0 20rpx 0;
-		max-height:900rpx;
+		height:900rpx;
 	}
 	.tran-enter-active, .tran-leave-active {
 	  transition: all .1s;

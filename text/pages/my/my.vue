@@ -7,9 +7,9 @@
 					<p> 还未登入 </p>
 					<p class="prson_text-two"> 还有有你的个性签名哦 </p>
 				</view>
-				<text class="prson_ico">
+				<view class="prson_ico">
 					<u-icon name="arrow-right" color="#ffffff"></u-icon>
-				</text>
+				</view>
 			</view>
 		</navigator>
 		<view class="main">
