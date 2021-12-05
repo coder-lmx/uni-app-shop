@@ -28,9 +28,13 @@
 			refresher-background="#f4f6fa"
 			:refresher-triggered="isload"
 			@refresherrefresh="refresherrefresh">
-			<compList v-for="(item,index) of dataList " :key="item.id" :item="item"></compList>
+			<compList 
+				v-for="(item,index) of dataList " 
+				:key="item.id" :item="item" 
+				:isShow="isShow"
+			></compList>
 		</scroll-view>
-		<compFoot></compFoot>
+		<compFoot @handOk="handOk"></compFoot>
 	</view>
 </template>
 <script>
@@ -46,6 +50,7 @@
 			return {
 				value:'',
 				isload:false,
+				isShow:false,                   //子组件选择框的显示与隐藏
 				// dataList:[],                  //主要数据展示
 				tabsState:{                  //滑块样式设置
 					list:[{
@@ -109,6 +114,10 @@
 			handClickTabs(e){
 				this.stateData.isSend=e.name
 				this.isload=true
+			},
+			//点击管理和完成时触发改变
+			handOk(){
+				this.isShow=!this.isShow
 			},
 			//下拉时触发改变状态
 			refresherrefresh(){

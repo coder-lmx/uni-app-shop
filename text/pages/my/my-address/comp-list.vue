@@ -9,6 +9,7 @@
 					<u-checkbox
 						:activeColor="main_color"
 						shape="circle"
+						:checked="item.isDelet"
 					>
 					</u-checkbox>
 				</u-checkbox-group>
@@ -40,17 +41,17 @@
 	//#endif 
 	export default {
 		name:'compList',
-		props:['item'],
+		props:['item','isShow'],
 		data(){
 			return{
-				isload:false,
+				
 				//#ifndef APP-PLUS
 					main_color:main_color,
 					//#endif
 				//#ifdef APP-PLUS
 					main_color:'#35BD00',
 				//#endif
-				isShow:false               ,//是否显示选择
+				// isShow:false               ,//是否显示选择
 				checkboxValue1:[]           
 			}
 		},

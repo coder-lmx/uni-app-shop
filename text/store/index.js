@@ -26,6 +26,13 @@ const store = new Vuex.Store({
 	mutations:{
 		addAddrData(state,value){
 			state.address=[...value]
+		},
+		changeAddrDelet(state,value){
+			if(value == 'add'){
+				state.address.map(item => Object.assign(item,{ isDelet : true}))
+			}else{
+				console.log('adwda')
+			}
 		}
 	},
 	actions:{

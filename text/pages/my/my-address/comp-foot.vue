@@ -1,6 +1,6 @@
 <template>
 	<view class="main">
-		<view class="foot" v-show="false">
+		<view class="foot" v-show="isShow">
 			<u-button
 				class="foot_bt"
 				type="default" 
@@ -8,6 +8,7 @@
 				:hairline="true"
 				:plain="true"
 				:throttleTime="500"
+				@click="handChangeShow"
 			></u-button>
 			<u-button 
 				class="foot_bt-right"
@@ -16,7 +17,7 @@
 				:throttleTime="500"
 			></u-button>
 		</view>
-		<view v-show="true" class="main_delel">
+		<view v-show="!isShow" class="main_delel">
 			<view style="display: flex;">
 				<u-checkbox-group
 					placement="column"
@@ -24,9 +25,10 @@
 					<u-checkbox
 						:activeColor="main_color"
 						shape="circle"
+						@change="handClickcheck"
 					>
 					</u-checkbox>
-				</u-checkbox-group>
+				</u-checkbox-group>	
 				全选
 			</view>
 			<view style="display: flex;">
@@ -45,6 +47,7 @@
 					text="完成"
 					:hairline="true"
 					:throttleTime="500"
+					@click="handChangeShow"
 				></u-button>
 			</view>
 		</view>
@@ -59,7 +62,7 @@
 		name:'comp-foot',
 		data(){
 			return{
-
+				isShow:true,
 				//#ifndef APP-PLUS
 					main_color:main_color,
 					//#endif
@@ -70,14 +73,24 @@
 		},
 		computed:{
 			isDisabled(){
-				let is=true;
-				for (let i of this.$store.state.address){
-					if(i.isDelet){
-						is=false
-						return ;
-					}
+				console.log(this.$store.state.address.some(item => !item.isDelet))
+				return this.$store.state.address.some(item => !item.isDelet)
+			}
+		},
+		methods:{
+			//切换模块样式
+			handChangeShow(){
+				this.isShow=!this.isShow
+				this.$emit('handOk')
+			},
+			//点击全选时改变数据
+			handClickcheck(e){
+				if(e){                   //e为真时为选中状态
+					this.$store.commit('changeAddrDelet','add')
+					console.log(this.$store.state.address)
+				}else{
+					this.$store.commit('changeAddrDelet','dele')
 				}
-				return is
 			}
 		}
 	}
