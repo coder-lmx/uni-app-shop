@@ -85,9 +85,9 @@
 }
 @font-face {
   font-family: 'iconfont';  /* Project id 2960249 */
-  src: url('https://at.alicdn.com/t/font_2960249_n52x1l411y.woff2?t=1638195214678') format('woff2'),
-       url('https://at.alicdn.com/t/font_2960249_n52x1l411y.woff?t=1638195214678') format('woff'),
-       url('https://at.alicdn.com/t/font_2960249_n52x1l411y.ttf?t=1638195214678') format('truetype');
+  src: url('https://at.alicdn.com/t/font_2960249_1jeh6rfzme1i.woff2?t=1638453176217') format('woff2'),
+       url('https://at.alicdn.com/t/font_2960249_1jeh6rfzme1i.woff?t=1638453176217') format('woff'),
+       url('https://at.alicdn.com/t/font_2960249_1jeh6rfzme1i.ttf?t=1638453176217') format('truetype');
 }
 .data-v-57f851f6:export {
   main_color: #35BD00;

@@ -20,4 +20,9 @@
 page{
 	background-color: $uni-bg-color;
 }
+uni-checkbox .uni-checkbox-input{
+		border-radius: 50% ;
+		width: 35rpx ;
+		height: 35rpx ;
+	}
 </style>

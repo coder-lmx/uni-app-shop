@@ -4,6 +4,8 @@
   "navigationBarTextStyle": "white",
   "usingComponents": {
     "u-tabs": "/uview-ui/components/u-tabs/u-tabs",
-    "u--input": "/uview-ui/components/u--input/u--input"
+    "u--input": "/uview-ui/components/u--input/u--input",
+    "comp-list": "/pages/my/my-address/comp-list",
+    "comp-foot": "/pages/my/my-address/comp-foot"
   }
 }

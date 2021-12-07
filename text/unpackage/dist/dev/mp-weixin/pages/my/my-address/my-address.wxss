@@ -88,4 +88,9 @@
 .address_box_input {
   background-color: #f4f6fa;
 }
+.address_scr {
+  padding: 30rpx;
+  box-sizing: border-box;
+  height: 950rpx;
+}
 

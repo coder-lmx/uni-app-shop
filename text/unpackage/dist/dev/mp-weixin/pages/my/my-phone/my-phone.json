@@ -2,5 +2,10 @@
   "navigationBarTitleText": "手机号设置",
   "enablePullDownRefresh": false,
   "navigationBarTextStyle": "white",
-  "usingComponents": {}
+  "usingComponents": {
+    "u--input": "/uview-ui/components/u--input/u--input",
+    "u-button": "/uview-ui/components/u-button/u-button",
+    "u-code-input": "/uview-ui/components/u-code-input/u-code-input",
+    "u-toast": "/uview-ui/components/u-toast/u-toast"
+  }
 }

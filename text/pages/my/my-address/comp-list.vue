@@ -2,17 +2,14 @@
 	<view class="addrList">
 		<view class="addrList_person">
 			<view v-show="isShow">
-				<u-checkbox-group
-					v-model="checkboxValue1"
-					placement="column"
+				<checkbox-group
+					@change="handChangeState($event,item.id)"
 				>
-					<u-checkbox
-						:activeColor="main_color"
-						shape="circle"
+					<checkbox 
 						:checked="item.isDelet"
-					>
-					</u-checkbox>
-				</u-checkbox-group>
+						color="#35BD00"
+					/>
+				</checkbox-group>
 			</view>
 			<view class="addrList_person_main">
 				<text class="addrList_person_name">{{item.name}}</text> 
@@ -27,6 +24,7 @@
 				<u-switch
 					v-model="btValue"
 					:activeColor="main_color"
+					@change="handchangeBt(item.isDefault,item.id)"
 					></u-switch>
 				<text class="addrList_bt_text">设置为默认寄件地址</text>
 			</view>
@@ -44,7 +42,8 @@
 		props:['item','isShow'],
 		data(){
 			return{
-				
+				text1:true,
+				isDelet:false,
 				//#ifndef APP-PLUS
 					main_color:main_color,
 					//#endif
@@ -58,6 +57,16 @@
 		computed:{
 			btValue(){
 				return this.item.isDefault
+			}
+		},
+		methods:{
+			handChangeState(event,id){
+				this.$store.commit('changeAddrDelet',{ id:id,e:event.detail.value.length===0?false:true })
+				// console.log(event.detail.value)
+			},
+			//默认选择控件
+			handchangeBt(value,id){
+				this.$store.commit('changeAddrDefault',{ value,id })
 			}
 		}
 	}
@@ -120,5 +129,9 @@
 				font-size: $uni-font-size-28;
 			}
 		}
+	}
+	.uni-checkbox-input{
+		background-color: $main-color;
+		color: $uni-bg-color-grey;
 	}
 </style>

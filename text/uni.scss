@@ -32,6 +32,7 @@ $uni-text-color-disable:#c0c0c0;
 $main-color:#35BD00;
 $uni-bg-color:#f4f6fa;
 $uni-bg-color-grey:#ffffff;
+$uni-bg-color-white:#cccccc;
 $uni-bg-color-hover:#f1f1f1;//点击状态颜色
 $uni-bg-color-mask:rgba(0, 0, 0, 0.4);//遮罩颜色
 
@@ -78,9 +79,13 @@ $uni-color-paragraph: #3F536E; // 文章段落颜色
 $uni-font-size-paragraph:15px;
 
 
+
+
 $uni-font-color:#999999;    //主字体颜色
 $uni-font-color-1:#626161;    //次字体颜色
 $uni-font-color-2:#35BD00;
+
+
 
 @mixin textover {           //文本过长隐藏
     overflow: hidden;

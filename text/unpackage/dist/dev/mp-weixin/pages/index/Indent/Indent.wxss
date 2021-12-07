@@ -32,7 +32,7 @@
 .scrll.data-v-b39c7dee {
   box-sizing: border-box;
   padding: 0 20rpx 0;
-  max-height: 900rpx;
+  height: 900rpx;
 }
 .tran-enter-active.data-v-b39c7dee, .tran-leave-active.data-v-b39c7dee {
   transition: all .1s;

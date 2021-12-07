@@ -18,18 +18,16 @@
 			></u-button>
 		</view>
 		<view v-show="!isShow" class="main_delel">
-			<view style="display: flex;">
-				<u-checkbox-group
-					placement="column"
+			<view style="display: flex; align-items: center;">
+				<checkbox-group
+					@change="handClickcheck"
 				>
-					<u-checkbox
-						:activeColor="main_color"
-						shape="circle"
-						@change="handClickcheck"
-					>
-					</u-checkbox>
-				</u-checkbox-group>	
-				全选
+					<checkbox 
+						id="check"
+						:checked="isCheck"
+						color="#35BD00"/>
+				</checkbox-group>
+				<label for="check">全选</label>
 			</view>
 			<view style="display: flex;">
 				<u-button
@@ -72,9 +70,11 @@
 			}
 		},
 		computed:{
-			isDisabled(){
-				console.log(this.$store.state.address.some(item => !item.isDelet))
-				return this.$store.state.address.some(item => !item.isDelet)
+			isDisabled(){                            //删除按钮是否显示
+				return !this.$store.state.address.some(item => item.isDelet)
+			},
+			isCheck(){                                 //全选的状态逻辑
+				return this.$store.state.address.every(item => item.isDelet)
 			}
 		},
 		methods:{
@@ -83,13 +83,13 @@
 				this.isShow=!this.isShow
 				this.$emit('handOk')
 			},
-			//点击全选时改变数据
-			handClickcheck(e){
+			//点击单选框时改变数据
+			handClickcheck(event){
+				const e=event.detail.value.length==0?false:true
 				if(e){                   //e为真时为选中状态
-					this.$store.commit('changeAddrDelet','add')
-					console.log(this.$store.state.address)
-				}else{
-					this.$store.commit('changeAddrDelet','dele')
+					this.$store.commit('changeAddrDelet',{e:true})
+				}else{                   
+					this.$store.commit('changeAddrDelet',{e:false})
 				}
 			}
 		}

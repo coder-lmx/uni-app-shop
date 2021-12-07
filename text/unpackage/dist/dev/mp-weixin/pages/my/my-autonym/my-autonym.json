@@ -2,5 +2,13 @@
   "navigationBarTitleText": "实名制设置",
   "enablePullDownRefresh": false,
   "navigationBarTextStyle": "white",
-  "usingComponents": {}
+  "usingComponents": {
+    "u-notice-bar": "/uview-ui/components/u-notice-bar/u-notice-bar",
+    "u--input": "/uview-ui/components/u--input/u--input",
+    "u-row": "/uview-ui/components/u-row/u-row",
+    "u-col": "/uview-ui/components/u-col/u-col",
+    "u-button": "/uview-ui/components/u-button/u-button",
+    "u-link": "/uview-ui/components/u-link/u-link",
+    "u-toast": "/uview-ui/components/u-toast/u-toast"
+  }
 }
