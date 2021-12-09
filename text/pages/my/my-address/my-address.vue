@@ -34,7 +34,10 @@
 				:isShow="isShow"
 			></compList>
 		</scroll-view>
-		<compFoot @handOk="handOk"></compFoot>
+		<compFoot 
+			@handOk="handOk" 
+			:refresherrefresh="refresherrefresh"
+		></compFoot>
 	</view>
 </template>
 <script>

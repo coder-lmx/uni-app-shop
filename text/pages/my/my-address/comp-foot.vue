@@ -38,6 +38,7 @@
 					:disabled="isDisabled"
 					:plain="true"
 					:throttleTime="500"
+					@click="handClickDelet"
 				></u-button>
 				<u-button
 					class="main_delel_bt"
@@ -49,15 +50,18 @@
 				></u-button>
 			</view>
 		</view>
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
 <script>
+	import http from '@/common/baseRequest.js'
 	//#ifndef APP-PLUS
 		import {main_color} from '@/uni.scss'     //除了App下执行
 	//#endif 
 	export default {
 		name:'comp-foot',
+		props:['refresherrefresh'],                            //列表刷新函数
 		data(){
 			return{
 				isShow:true,
@@ -90,6 +94,35 @@
 					this.$store.commit('changeAddrDelet',{e:true})
 				}else{                   
 					this.$store.commit('changeAddrDelet',{e:false})
+				}
+			},
+			//点击删除按钮实现
+			async handClickDelet(){
+				const deletList=[]
+				this.$store.state.address.forEach(item => { if(item.isDelet) deletList.push( item.id)} )         //获取当前要删除的id号
+				const { data }=await http.request({
+					method:'GET',
+					url:'/deletId',
+					params:{												//发送数据数据
+						state:JSON.stringify(deletList)             //以JSON格式发送组件所有数据
+					}
+				})
+				if(data[0].status){
+					const refresherrefresh=this.refresherrefresh
+					this.$refs.uToast.show({
+						type: 'success',
+						message: "删除成功",
+						duration:1000,
+						complete(){
+							refresherrefresh()
+						}
+					})
+				}else{
+					this.$refs.uToast.show({
+						type: 'error',
+						message: "删除失败请重试",
+						duration:1000
+					})
 				}
 			}
 		}

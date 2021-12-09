@@ -43,8 +43,18 @@
             "path" : "pages/my/login/login",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "navigationBarTitleText": "个人信息",
+                "enablePullDownRefresh": false,
+				"navigationBarTextStyle":"white"
+            }
+            
+        },{
+            "path" : "pages/my/login/login_model/login_model",
+            "style" :                                                                                  
+            {
+                "navigationBarTitleText": "更多信息",
+                "enablePullDownRefresh": false,
+				"navigationBarTextStyle":"white"
             }
             
         }
@@ -68,7 +78,6 @@
 				"navigationBarTextStyle":"white",
 				"navigationBarTitleText":"实名制设置"
             }
-            
         }
         ,{
             "path" : "pages/my/my-reel/my-reel",
@@ -111,6 +120,15 @@
                 "enablePullDownRefresh": false,
 				"navigationBarTextStyle":"white",
 				"navigationBarTitleText":"客服服务"
+            }
+            
+        }
+        ,{
+            "path" : "pages/inquire/login/login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
             }
             
         }

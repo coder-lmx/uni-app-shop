@@ -28,7 +28,6 @@
 					></u-switch>
 				<text class="addrList_bt_text">设置为默认寄件地址</text>
 			</view>
-			<text class="addrList_bt_dele"> 删除 </text>
 		</view>
 	</view>
 </template>
@@ -55,14 +54,18 @@
 			}
 		},
 		computed:{
-			btValue(){
-				return this.item.isDefault
+			btValue:{
+				get(){
+					return this.item.isDefault
+				},
+				set(){
+					return false
+				}
 			}
 		},
 		methods:{
 			handChangeState(event,id){
 				this.$store.commit('changeAddrDelet',{ id:id,e:event.detail.value.length===0?false:true })
-				// console.log(event.detail.value)
 			},
 			//默认选择控件
 			handchangeBt(value,id){

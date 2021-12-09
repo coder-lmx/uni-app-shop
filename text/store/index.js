@@ -9,8 +9,7 @@ const store = new Vuex.Store({
     state: {
         // 用户信息
         $userInfo: {
-            id: 1,
-			attestation:false                                             //实名状态
+			// attestation:false                                             //实名状态
         },
 		//用户所有的地址
 		address:[
@@ -28,6 +27,7 @@ const store = new Vuex.Store({
 		addAddrData(state,value){
 			state.address=[...value]
 		},
+		//更改地址的Delet属性
 		changeAddrDelet(state,value){
 			const { id,e }=value
 			if(id === undefined){                           //只点击全选时触发
@@ -37,15 +37,15 @@ const store = new Vuex.Store({
 					if(item.id != id) return item
 					return Object.assign({},item,{ isDelet : e})
 				})
-				state.address=state.address.map(item =>{
-					if(item.id != id) return item
-					return Object.assign({},item,{ isDelet : e})
-				})
 			}
 		},
+		//更改地址的Default属性
 		changeAddrDefault(state,option){
 			const { value,id }=option
-			console.log(value,id)
+			state.address=state.address.map(item =>{
+				if(item.id != id) return  Object.assign({},item,{ isDefault : false})
+				return Object.assign({},item,{ isDefault : !value})
+			})
 		},
 		editAttestation(state){
 		   state.$userInfo.attestation=true

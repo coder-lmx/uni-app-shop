@@ -2,16 +2,16 @@
 	<view>
 		<view class="address align-items">
 			<view class="ico">
-				<image src="@/assets/ji.png" class="address_model_ico"></image>
-				<image src="@/assets/shenglve.png" class="address_model_ico"></image>
-				<image src="@/assets/shenglve.png" class="address_model_ico"></image>
-				<image src="@/assets/shou.png" class="address_model_ico"></image>
+				<image src="@/static/images/ji.png" class="address_model_ico"></image>
+				<image src="@/static/images/shenglve.png" class="address_model_ico"></image>
+				<image src="@/static/images/shenglve.png" class="address_model_ico"></image>
+				<image src="@/static/images/shou.png" class="address_model_ico"></image>
 			</view>
 			<view class="address_model">
 				<view class="address_main padd align-items">
 					<view class="address_model_person">
 						<text>李闽昕</text>
-						<text>155****3550</text>
+						<text>155****3550</text> 
 						<view class="address_model_person-addr">江西省南昌市青山湖区博林中心广场(南昌市青山湖区)</view>
 					</view>
 					<text class="address_model_addr">地址簿</text>

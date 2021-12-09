@@ -4,7 +4,7 @@
 			<view class="prson">
 				<u-avatar :src="src" size="94rpx"  class="prson_pic" ></u-avatar>
 				<view class="prson_text">
-					<p> 还未登入 </p>
+					<p> LMX </p>
 					<p class="prson_text-two"> 还有有你的个性签名哦 </p>
 				</view>
 				<view class="prson_ico">
