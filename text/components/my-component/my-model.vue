@@ -13,7 +13,7 @@
 			handSkip(title){
 				console.log(title)
 				uni.navigateTo({
-					url:`../../pages/my/my-${title}/my-${title}`
+					url:`/pages/my/my-${title}/my-${title}`
 				})
 			}
 		}
